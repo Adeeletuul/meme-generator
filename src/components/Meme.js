@@ -1,9 +1,8 @@
-
 import { useEffect, useState } from "react";
 
-export default function Meme() {
+const Meme = () => {
 
-     const [meme, setMeme]= useState({
+     const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1ur9b0.jpg"
@@ -18,11 +17,11 @@ export default function Meme() {
        }, [])
 
     const handleChange = (event) => {
-        const { name, value } = event.target
-        setMeme(prevMeme => ({...prevMeme, [name]: value}))
+        const { name, value } = event.target;
+        setMeme(prevMeme => ({...prevMeme, [name]: value}));
     }
 
-    function getMemeImage() {
+    const getMemeImage = () => {
         const randomNumber = Math.floor(Math.random() * allMemes.length);
         const url = allMemes[randomNumber].url;
         setMeme(prevMeme => ({
@@ -48,7 +47,7 @@ export default function Meme() {
                     onChange={handleChange}
                 />
                 <button className="form--button"
-                    onClick={getMemeImage}>Get a new meme image 🖼️
+                    onClick={getMemeImage}>Get a new meme image
                 </button>
             </div>
              <div className="meme">
@@ -60,3 +59,5 @@ export default function Meme() {
         </main>
     )
 }
+
+export default Meme;
